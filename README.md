@@ -24,10 +24,11 @@ Copy the [config.php](./src/config.php) file, rename to codemirror.php and place
 ``` php
 return [
 	"jsOptions" => [
-		"theme" => "",
-		"mode" => "markdown",
+		"theme" => "default",
+		"mode" => "gfm",
 		"lineNumbers" => true,
 		"lineWrapping" => true,
+		"viewportMargin" => new JsExpression('Infinity'),
 	],
 ];
 ```
