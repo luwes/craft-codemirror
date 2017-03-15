@@ -25,8 +25,8 @@ use yii\web\JsExpression;
 
 return [
 	"jsOptions" => [
-		"theme" => "",
-		"mode" => "markdown",
+		"theme" => "default",
+		"mode" => "gfm",
 		"lineNumbers" => true,
 		"lineWrapping" => true,
 		"viewportMargin" => new JsExpression('Infinity'),

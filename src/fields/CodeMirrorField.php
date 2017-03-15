@@ -123,7 +123,7 @@ class CodeMirrorField extends Field
 		// Variables to pass down to our field JavaScript to let it namespace properly
 		$options = Craft::$app->config->get('jsOptions', 'codemirror');
 
-		if (!empty($options['theme']))
+		if (!empty($options['theme']) && $options['theme'] != 'default')
 		{
 			$theme = $options['theme'];
 			$view->registerCssFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/theme/{$theme}.css", [
@@ -131,13 +131,36 @@ class CodeMirrorField extends Field
             ]);
 		}
 
+		$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/addon/mode/overlay.js", [
+            'depends' => CodeMirrorAsset::class
+        ], 'codemirror-overlay-js');
+
 		if (!empty($options['mode']))
 		{
 			$mode = $options['mode'];
 			$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/mode/{$mode}/{$mode}.js", [
-                'depends' => CodeMirrorAsset::class
+                'depends' => [
+                	CodeMirrorAsset::class,
+                	'codemirror-overlay-js'
+                ]
             ]);
 		}
+
+		$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/mode/xml/xml.js", [
+            'depends' => CodeMirrorAsset::class
+        ]);
+		$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/mode/markdown/markdown.js", [
+            'depends' => CodeMirrorAsset::class
+        ]);
+		$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/mode/javascript/javascript.js", [
+            'depends' => CodeMirrorAsset::class
+        ]);
+		$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/mode/css/css.js", [
+            'depends' => CodeMirrorAsset::class
+        ]);
+		$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/mode/htmlmixed/htmlmixed.js", [
+            'depends' => CodeMirrorAsset::class
+        ]);
 
 		$options = Json::encode($options);
 		$view->registerJs("CodeMirror.fromTextArea($('#$namespacedId')[0], $options);");
