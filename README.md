@@ -2,7 +2,7 @@
 
 Add the awesome in-browser code editor CodeMirror as a field type.
 
-<!-- ![Screenshot](resources/img/plugin-logo.png) -->
+![Screenshot](resources/img/Screen Shot 2017-03-15 at 08.30.07.png)
 
 ## Installation
 
