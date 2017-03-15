@@ -4,7 +4,10 @@
   /* Set height, width, borders, and global font properties here */
   font-family: monospace;
   height: auto;
+  min-height: 50px;
   color: black;
+  border: 1px solid #e3e5e8;
+	border-radius: 3px;
 }
 
 /* PADDING */
