@@ -30,6 +30,17 @@ return [
 		"lineWrapping" => true,
 		"viewportMargin" => new JsExpression('Infinity'),
 	],
+	"modes" => [
+		"xml",
+		"htmlmixed",
+		"javascript",
+		"css",
+		"markdown",
+		"gfm",
+	],
+	"addons" => [
+		"mode/overlay", // needed for gfm (github flavored) mode
+	]
 ];
 ```
 

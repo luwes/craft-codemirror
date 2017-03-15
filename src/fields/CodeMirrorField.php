@@ -131,36 +131,23 @@ class CodeMirrorField extends Field
             ]);
 		}
 
-		$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/addon/mode/overlay.js", [
-            'depends' => CodeMirrorAsset::class
-        ], 'codemirror-overlay-js');
-
-		if (!empty($options['mode']))
+		$addons = Craft::$app->config->get('addons', 'codemirror');
+		if (!empty($addons))
 		{
-			$mode = $options['mode'];
-			$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/mode/{$mode}/{$mode}.js", [
-                'depends' => [
-                	CodeMirrorAsset::class,
-                	'codemirror-overlay-js'
-                ]
-            ]);
+			foreach ($addons as $addon)
+			{
+				$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/addon/{$addon}.js", [ 'depends' => CodeMirrorAsset::class ]);
+			}
 		}
 
-		$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/mode/xml/xml.js", [
-            'depends' => CodeMirrorAsset::class
-        ]);
-		$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/mode/markdown/markdown.js", [
-            'depends' => CodeMirrorAsset::class
-        ]);
-		$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/mode/javascript/javascript.js", [
-            'depends' => CodeMirrorAsset::class
-        ]);
-		$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/mode/css/css.js", [
-            'depends' => CodeMirrorAsset::class
-        ]);
-		$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/mode/htmlmixed/htmlmixed.js", [
-            'depends' => CodeMirrorAsset::class
-        ]);
+		$modes = Craft::$app->config->get('modes', 'codemirror');
+		if (!empty($modes))
+		{
+			foreach ($modes as $mode)
+			{
+				$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/mode/{$mode}/{$mode}.js", [ 'depends' => CodeMirrorAsset::class ]);
+			}
+		}
 
 		$options = Json::encode($options);
 		$view->registerJs("CodeMirror.fromTextArea($('#$namespacedId')[0], $options);");
