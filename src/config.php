@@ -8,6 +8,8 @@
  * @copyright Copyright (c) 2017 Wesley Luyten
  */
 
+use yii\web\JsExpression;
+
 /**
  * CodeMirror config.php
  *
@@ -27,5 +29,6 @@ return [
 		"mode" => "markdown",
 		"lineNumbers" => true,
 		"lineWrapping" => true,
+		"viewportMargin" => new JsExpression('Infinity'),
 	],
 ];
