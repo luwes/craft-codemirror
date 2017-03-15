@@ -1,0 +1,41 @@
+{
+    "name": "luwes/craft3-codemirror",
+    "description": "Add the awesome in-browser code editor CodeMirror as a field type.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "codemirror"
+    ],
+    "support": {
+        "docs": "https://github.com/luwes/craft3-codemirror/blob/master/README.md",
+        "issues": "https://github.com/luwes/craft3-codemirror/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Wesley Luyten",
+            "homepage": "https://wesleyluyten.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "~3.0.0-beta.1"
+    },
+    "autoload": {
+        "psr-4": {
+          "luwes\\codemirror\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "CodeMirror",
+        "handle": "codeMirror",
+        "schemaVersion": "1.0.0",
+        "hasSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/luwes/craft3-codemirror/master/CHANGELOG.md",
+        "class": "luwes\\codemirror\\CodeMirror"
+    }
+}
