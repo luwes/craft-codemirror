@@ -120,9 +120,11 @@ class CodeMirrorField extends Field
 		$id = $view->formatInputId($this->handle);
 		$namespacedId = $view->namespaceInputId($id);
 
-		// Variables to pass down to our field JavaScript to let it namespace properly
-		$options = Craft::$app->config->get('jsOptions', 'codemirror');
 
+		$config = @include __DIR__ . '/../config.php';
+
+		// Variables to pass down to our field JavaScript to let it namespace properly
+		$options = $config['jsOptions'];
 		if (!empty($options['theme']) && $options['theme'] != 'default')
 		{
 			$theme = $options['theme'];
@@ -131,7 +133,7 @@ class CodeMirrorField extends Field
             ]);
 		}
 
-		$addons = Craft::$app->config->get('addons', 'codemirror');
+		$addons = $config['addons'];
 		if (!empty($addons))
 		{
 			foreach ($addons as $addon)
@@ -140,7 +142,7 @@ class CodeMirrorField extends Field
 			}
 		}
 
-		$modes = Craft::$app->config->get('modes', 'codemirror');
+		$modes = $config['modes'];
 		if (!empty($modes))
 		{
 			foreach ($modes as $mode)
