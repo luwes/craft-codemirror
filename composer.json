@@ -33,8 +33,6 @@
         "name": "CodeMirror",
         "handle": "codeMirror",
         "schemaVersion": "1.0.0",
-        "hasSettings": false,
-        "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/luwes/craft3-codemirror/master/CHANGELOG.md",
         "class": "luwes\\codemirror\\CodeMirror"
     }
