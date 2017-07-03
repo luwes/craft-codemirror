@@ -43,7 +43,7 @@ class CodeMirrorField extends Field
 	 */
 	public static function displayName(): string
 	{
-		return Craft::t('codemirror', 'CodeMirror');
+		return Craft::t('code-mirror', 'CodeMirror');
 	}
 
 	// Public Methods
