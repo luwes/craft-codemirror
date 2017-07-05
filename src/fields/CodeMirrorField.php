@@ -92,7 +92,7 @@ class CodeMirrorField extends Field
 	{
 		// Render the settings template
 		return Craft::$app->getView()->renderTemplate(
-			'codemirror'
+			'code-mirror'
 			. DIRECTORY_SEPARATOR
 			. '_components'
 			. DIRECTORY_SEPARATOR
@@ -156,7 +156,7 @@ class CodeMirrorField extends Field
 
 		// Render the input template
 		return $view->renderTemplate(
-			'codemirror'
+			'code-mirror'
 			. DIRECTORY_SEPARATOR
 			. '_components'
 			. DIRECTORY_SEPARATOR
