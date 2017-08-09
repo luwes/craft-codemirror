@@ -68,7 +68,7 @@ class CodeMirror extends Plugin
 			}
 		);
 
-		Craft::info('CodeMirror ' . Craft::t('codemirror', 'plugin loaded'), __METHOD__);
+		Craft::info('CodeMirror ' . Craft::t('code-mirror', 'plugin loaded'), __METHOD__);
 	}
 
 	// Protected Methods
