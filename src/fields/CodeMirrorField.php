@@ -43,7 +43,7 @@ class CodeMirrorField extends Field
 	 */
 	public static function displayName(): string
 	{
-		return Craft::t('codemirror', 'CodeMirror');
+		return Craft::t('code-mirror', 'CodeMirror');
 	}
 
 	// Public Methods
@@ -92,7 +92,7 @@ class CodeMirrorField extends Field
 	{
 		// Render the settings template
 		return Craft::$app->getView()->renderTemplate(
-			'codemirror'
+			'code-mirror'
 			. DIRECTORY_SEPARATOR
 			. '_components'
 			. DIRECTORY_SEPARATOR
@@ -156,7 +156,7 @@ class CodeMirrorField extends Field
 
 		// Render the input template
 		return $view->renderTemplate(
-			'codemirror'
+			'code-mirror'
 			. DIRECTORY_SEPARATOR
 			. '_components'
 			. DIRECTORY_SEPARATOR
