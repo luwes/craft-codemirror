@@ -70,8 +70,6 @@ class CodeMirror extends Plugin
 
 	// Protected Methods
 	// =========================================================================
-	// Protected Methods
-	// =========================================================================
 	protected function createSettingsModel()
 	{
 		return new Settings();
