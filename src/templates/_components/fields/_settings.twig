@@ -14,4 +14,15 @@
 
 {% import "_includes/forms" as forms %}
 
+{{ forms.selectField({
+	label: 'Mode' | t('app'),
+    instructions: 'Highlighting Language.' | t('app'),
+	id: 'mode',
+	name: 'mode',
+	value: field.mode,
+    translatable: false,
+    options: modes,
+	errors: field.getErrors('mode')
+}) }}
+
 {% do view.registerAssetBundle("luwes\\codemirror\\CodeMirrorAsset") %}

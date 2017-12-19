@@ -19,7 +19,6 @@ use craft\base\Field;
 use craft\helpers\Db;
 use yii\db\Schema;
 use craft\helpers\Json;
-
 /**
  * @author    Wesley Luyten
  * @package   CodeMirror
@@ -45,7 +44,7 @@ class CodeMirrorField extends Field
 	{
 		return Craft::t('code-mirror', 'CodeMirror');
 	}
-
+	public $mode = '';
 	// Public Methods
 	// =========================================================================
 
@@ -90,6 +89,12 @@ class CodeMirrorField extends Field
 	 */
 	public function getSettingsHtml()
 	{
+		$settings = CodeMirror::getInstance()->getSettings();
+		$modes = array();
+
+		foreach($settings->modes as $mode) {
+			$modes[$mode] = $mode;
+		}
 		// Render the settings template
 		return Craft::$app->getView()->renderTemplate(
 			'code-mirror'
@@ -101,6 +106,7 @@ class CodeMirrorField extends Field
 			. '_settings',
 			[
 				'field' => $this,
+				'modes' => $modes
 			]
 		);
 	}
@@ -120,11 +126,12 @@ class CodeMirrorField extends Field
 		$id = $view->formatInputId($this->handle);
 		$namespacedId = $view->namespaceInputId($id);
 
+		$config = CodeMirror::getInstance()->getSettings();
 
-		$config = @include __DIR__ . '/../config.php';
 
 		// Variables to pass down to our field JavaScript to let it namespace properly
-		$options = $config['jsOptions'];
+		$options = $config->jsOptions;
+
 		if (!empty($options['theme']) && $options['theme'] != 'default')
 		{
 			$theme = $options['theme'];
@@ -133,16 +140,21 @@ class CodeMirrorField extends Field
             ]);
 		}
 
-		$addons = $config['addons'];
+		$addons = $config->addons;
 		if (!empty($addons))
 		{
 			foreach ($addons as $addon)
 			{
-				$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/addon/{$addon}.js", [ 'depends' => CodeMirrorAsset::class ]);
+				if (file_exists(realpath(__DIR__ . "/../assets/addon/{$addon}.js"))) {
+					$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/addon/{$addon}.js", [ 'depends' => CodeMirrorAsset::class ]);
+				}
+				if (file_exists(realpath(__DIR__ . "/../assets/addon/{$addon}.css"))) {
+					$view->registerCssFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/addon/{$addon}.css", [ 'depends' => CodeMirrorAsset::class ]);
+				}
 			}
 		}
 
-		$modes = $config['modes'];
+		$modes = $config->modes;
 		if (!empty($modes))
 		{
 			foreach ($modes as $mode)
@@ -150,6 +162,8 @@ class CodeMirrorField extends Field
 				$view->registerJsFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/mode/{$mode}/{$mode}.js", [ 'depends' => CodeMirrorAsset::class ]);
 			}
 		}
+
+		$options['mode'] = $this->mode;
 
 		$options = Json::encode($options);
 		$view->registerJs("CodeMirror.fromTextArea($('#$namespacedId')[0], $options);");
