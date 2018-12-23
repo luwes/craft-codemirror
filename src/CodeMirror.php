@@ -10,17 +10,14 @@
 
 namespace luwes\codemirror;
 
-
 use Craft;
 use craft\base\Plugin;
-use craft\services\Plugins;
 use craft\events\PluginEvent;
-use craft\services\Fields;
 use craft\events\RegisterComponentTypesEvent;
-
-use yii\base\Event;
-
+use craft\services\Fields;
+use craft\services\Plugins;
 use luwes\codemirror\fields\CodeMirrorField;
+use yii\base\Event;
 
 /**
  * Class CodeMirror
@@ -73,5 +70,10 @@ class CodeMirror extends Plugin
 
 	// Protected Methods
 	// =========================================================================
+	protected function createSettingsModel()
+	{
+		return new Settings();
+	}
+
 
 }

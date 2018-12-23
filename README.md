@@ -19,13 +19,13 @@ https://github.com/codemirror/codemirror
 
 ## Configuring CodeMirror
 
-Copy the [config.php](./src/config.php) file, rename to codemirror.php and place in the craft config folder to override the default options.
+Copy the code below, create a file named code-mirror.php and place in the craft config folder to override the default options.
 
 ``` php
 return [
 	"jsOptions" => [
 		"theme" => "default",
-		"mode" => "gfm",
+		// "mode" => "gfm", (Not needed anymore)
 		"lineNumbers" => true,
 		"lineWrapping" => true,
 		"viewportMargin" => new JsExpression('Infinity'),

@@ -16,4 +16,5 @@
 *.sublime-workspace
 *.sublime-project
 *.tmproj
+.history
 *.tmproject
