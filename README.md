@@ -19,35 +19,28 @@ https://github.com/codemirror/codemirror
 
 ## Configuring CodeMirror
 
-Copy the code below, create a file named code-mirror.php and place in the craft config folder to override the default options.
+Copy the code below, create a file named `code-mirror.php` and place it in the craft config folder to override the default options.
 
 ``` php
 return [
-	"jsOptions" => [
-		"theme" => "default",
-		// "mode" => "gfm", (Not needed anymore)
-		"lineNumbers" => true,
-		"lineWrapping" => true,
-		"viewportMargin" => new JsExpression('Infinity'),
-	],
-	"modes" => [
-		"xml",
-		"htmlmixed",
-		"javascript",
-		"css",
-		"markdown",
-		"gfm",
-	],
-	"addons" => [
-		"mode/overlay", // needed for gfm (github flavored) mode
-	]
+    'jsOptions' => [
+        'theme' => 'default',
+        'lineNumbers' => true,
+        'lineWrapping' => true,
+        'viewportMargin' => new JsExpression('Infinity'),
+    ],
+    'modes' => [
+        'gfm', // the first mode is enabled by default
+        'markdown',
+        'htmlmixed',
+        'javascript',
+        'css',
+        'xml',
+    ],
+    'addons' => [
+        'mode/overlay', // needed for gfm (github flavored) mode
+    ]
 ];
 ```
-
-## CodeMirror Roadmap
-
-Some things to do, and ideas for potential features:
-
-* Release it
 
 Brought to you by [Wesley Luyten](https://wesleyluyten.com)
