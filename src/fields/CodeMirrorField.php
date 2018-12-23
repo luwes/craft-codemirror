@@ -32,7 +32,7 @@ class CodeMirrorField extends Field
 	/**
 	 * @var string
 	 */
-	//public $someAttribute;
+	public $mode = '';
 
 	// Static Methods
 	// =========================================================================
@@ -44,7 +44,7 @@ class CodeMirrorField extends Field
 	{
 		return Craft::t('code-mirror', 'CodeMirror');
 	}
-	public $mode = '';
+
 	// Public Methods
 	// =========================================================================
 
@@ -90,7 +90,7 @@ class CodeMirrorField extends Field
 	public function getSettingsHtml()
 	{
 		$settings = CodeMirror::getInstance()->getSettings();
-		$modes = array();
+		$modes = [];
 
 		foreach($settings->modes as $mode) {
 			$modes[$mode] = $mode;
@@ -136,8 +136,8 @@ class CodeMirrorField extends Field
 		{
 			$theme = $options['theme'];
 			$view->registerCssFile($am->getPublishedUrl('@luwes/codemirror/assets', true)."/theme/{$theme}.css", [
-                'depends' => CodeMirrorAsset::class
-            ]);
+				'depends' => CodeMirrorAsset::class
+			]);
 		}
 
 		$addons = $config->addons;
@@ -163,7 +163,11 @@ class CodeMirrorField extends Field
 			}
 		}
 
-		$options['mode'] = $this->mode;
+		if ($this->mode) {
+			$options['mode'] = $this->mode;
+		} else {
+			$options['mode'] = $modes[0];
+		}
 
 		$options = Json::encode($options);
 		$view->registerJs("CodeMirror.fromTextArea($('#$namespacedId')[0], $options);");

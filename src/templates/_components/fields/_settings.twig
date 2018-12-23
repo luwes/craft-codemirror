@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2017 Wesley Luyten
  * @link      https://wesleyluyten.com
  * @package   CodeMirror
- * @since     1.0.0
+ * @since     1.0.1
  */
 #}
 
@@ -16,12 +16,12 @@
 
 {{ forms.selectField({
 	label: 'Mode' | t('app'),
-    instructions: 'Highlighting Language.' | t('app'),
+	instructions: 'Highlighting Language.' | t('app'),
 	id: 'mode',
 	name: 'mode',
 	value: field.mode,
-    translatable: false,
-    options: modes,
+	translatable: false,
+	options: modes,
 	errors: field.getErrors('mode')
 }) }}
 
