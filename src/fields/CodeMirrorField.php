@@ -170,8 +170,16 @@ class CodeMirrorField extends Field
 		}
 
 		$options = Json::encode($options);
-		$view->registerJs("CodeMirror.fromTextArea($('#$namespacedId')[0], $options);");
-
+				
+		$view->registerJs("
+			(function() {
+				var editor = CodeMirror.fromTextArea($('#$namespacedId')[0], $options);
+				editor.on('change', function() {
+					editor.save();
+				});
+			})();
+		");
+		
 		// Render the input template
 		return $view->renderTemplate(
 			'code-mirror'
