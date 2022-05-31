@@ -34,5 +34,10 @@
         "handle": "code-mirror",
         "changelogUrl": "https://raw.githubusercontent.com/luwes/craft3-codemirror/master/CHANGELOG.md",
         "class": "luwes\\codemirror\\CodeMirror"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "craftcms/rector": "dev-main"
     }
 }
