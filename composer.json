@@ -2,7 +2,7 @@
     "name": "luwes/craft-codemirror",
     "description": "Add the awesome in-browser code editor CodeMirror as a field type.",
     "type": "craft-plugin",
-    "version": "1.0.2",
+    "version": "2.0.0",
     "keywords": [
         "craft",
         "cms",
