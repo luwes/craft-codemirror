@@ -1,4 +1,4 @@
-# CodeMirror plugin for Craft CMS 3.x
+# CodeMirror plugin for Craft CMS
 
 Add the awesome in-browser code editor CodeMirror as a field type.
 
@@ -8,10 +8,10 @@ Add the awesome in-browser code editor CodeMirror as a field type.
 
 To install CodeMirror, follow these steps:
 
-1. Install with Composer via `composer require luwes/craft3-codemirror`
+1. Install with Composer via `composer require luwes/craft-codemirror`
 2. Install plugin in the Craft Control Panel under Settings > Plugins
 
-CodeMirror works on Craft 3.x.
+CodeMirror works on Craft 3.x and 4.x.
 
 ## CodeMirror Overview
 
