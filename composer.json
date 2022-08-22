@@ -22,7 +22,8 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^3.0.0-beta.20"
+        "php": "^8.0",
+        "craftcms/cms": "^3.0.0-beta.20 || ^4.0.0"
     },
     "autoload": {
         "psr-4": {
@@ -34,5 +35,10 @@
         "handle": "code-mirror",
         "changelogUrl": "https://raw.githubusercontent.com/luwes/craft3-codemirror/master/CHANGELOG.md",
         "class": "luwes\\codemirror\\CodeMirror"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "craftcms/rector": "dev-main"
     }
 }

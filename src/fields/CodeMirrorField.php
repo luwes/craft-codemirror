@@ -51,7 +51,7 @@ class CodeMirrorField extends Field
 	/**
 	 * @inheritdoc
 	 */
-	public function rules()
+	public function rules(): array
 	{
 		$rules = parent::rules();
 		$rules = array_merge($rules, [
@@ -63,7 +63,7 @@ class CodeMirrorField extends Field
 	/**
 	 * @inheritdoc
 	 */
-	public function getContentColumnType(): string
+	public function getContentColumnType(): array|string
 	{
 		return Schema::TYPE_TEXT;
 	}
@@ -71,7 +71,7 @@ class CodeMirrorField extends Field
 	/**
 	 * @inheritdoc
 	 */
-	public function normalizeValue($value, ElementInterface $element = null)
+	public function normalizeValue(mixed $value, ?\craft\base\ElementInterface $element = null): mixed
 	{
 		return $value;
 	}
@@ -79,7 +79,7 @@ class CodeMirrorField extends Field
 	/**
 	 * @inheritdoc
 	 */
-	public function serializeValue($value, ElementInterface $element = null)
+	public function serializeValue(mixed $value, ?\craft\base\ElementInterface $element = null): mixed
 	{
 		return parent::serializeValue($value, $element);
 	}
@@ -87,7 +87,7 @@ class CodeMirrorField extends Field
 	/**
 	 * @inheritdoc
 	 */
-	public function getSettingsHtml()
+	public function getSettingsHtml(): ?string
 	{
 		$settings = CodeMirror::getInstance()->getSettings();
 		$modes = [];
@@ -114,7 +114,7 @@ class CodeMirrorField extends Field
 	/**
 	 * @inheritdoc
 	 */
-	public function getInputHtml($value, ElementInterface $element = null): string
+	public function getInputHtml(mixed $value, ?\craft\base\ElementInterface $element = null): string
 	{
 		$am = Craft::$app->getAssetManager();
 		$view = Craft::$app->getView();
